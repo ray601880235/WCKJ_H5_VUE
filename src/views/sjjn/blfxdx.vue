@@ -82,7 +82,9 @@ watch(() => codestr,(val: string)=>{
 })
 
 const toHome = () => {
-  router.back()
+  router.push({
+    name: 'blfxdxlb',
+  })
 }
 
 provide('dataJson',dataJson)

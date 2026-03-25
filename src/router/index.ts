@@ -1,8 +1,8 @@
-import { createRouter, createWebHistory } from 'vue-router'
-const _path:string = '/sjjn/blfxdx'
+import { createRouter, createWebHashHistory } from 'vue-router'
+//const _path:string = '/sjjn/blfxdx'
 const routes = [
     {
-        path: _path,
+        path: '/',
         name: 'blfxdx',
         component: () => import('@/views/sjjn/blfxdx.vue'),
         meta: {
@@ -11,7 +11,7 @@ const routes = [
         }
     },
     {
-        path: `${_path}/blfxdxlb`,
+        path: `/blfxdxlb`,
         name: 'blfxdxlb',
         component: () => import('@/views/blfxdxlb/blfxdxlb.vue'),
         meta: {
@@ -22,7 +22,7 @@ const routes = [
 ]
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory('/sjjn/blfxdx/'),
     routes,
     scrollBehavior(_to:any, _from:any, savedPosition:any) {
         if (savedPosition) {
@@ -33,13 +33,32 @@ const router = createRouter({
     }
 })
 
-router.beforeEach((to:any, _from:any, next:any) => {
+router.beforeEach((to: any, _from: any, next: any) => {
     document.title = to.meta.title as string || ''
     if (to.path.slice(-1) !== '/') {
         next({ path: to.path + '/', query: to.query })
-    } else {
-        next()
+        return
     }
+
+    const hasUrlParams = window.location.search && window.location.search.length > 1
+    const hasRouteQuery = Object.keys(to.query).length > 0
+
+    if (hasUrlParams && !hasRouteQuery) {
+        const urlParams = new URLSearchParams(window.location.search)
+        const query: any = {}
+        urlParams.forEach((value, key) => {
+            query[key] = value
+        })
+
+        next({
+            path: to.path,
+            query: { ...to.query, ...query },
+            replace: true
+        })
+        return
+    }
+
+    next()
 })
 
 export default router
