@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
+const _path:string = '/sjjn/blfxdx'
 const routes = [
     {
-        path: '/sjjn/blfxdx',
+        path: _path,
         name: 'blfxdx',
         component: () => import('@/views/sjjn/blfxdx.vue'),
         meta: {
@@ -11,7 +11,7 @@ const routes = [
         }
     },
     {
-        path: '/sjjn/blfxdx/blfxdxlb',
+        path: `${_path}/blfxdxlb`,
         name: 'blfxdxlb',
         component: () => import('@/views/blfxdxlb/blfxdxlb.vue'),
         meta: {

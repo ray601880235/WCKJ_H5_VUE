@@ -45,6 +45,7 @@ const loadDataJson = async () => {
   if (!response.ok) throw new Error(`${fileName} 不存在`)
   const text:string = await response.text()
   dataJson.value = JSON5.parse(text)
+  document.title = dataJson.value.title
   getCase()
 }
 loadDataJson()
@@ -77,14 +78,14 @@ const toAnswer = (codestr:string) => {
   position: relative;
   .top-bg{
     position: absolute;
-    top: -50px;
+    top: -65px;
     z-index: 1;
   }
   .body{
     position: absolute;
-    top: 150px;
+    top: 135px;
     width: 100%;
-    height: calc(100% - 150px);
+    height: calc(100% - 135px);
     padding: 10px;
     z-index: 2;
     .content{
