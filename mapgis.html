@@ -19,27 +19,57 @@
 <div id="mapContainer"></div>
 
 <script type="text/javascript" src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=LJE9DBPofw0ZoCkSyVXhWzLSKdzWUdau&callback=initBaiduMap&language=zh-cn"></script>
-
+<script src="https://unpkg.com/gcoord/dist/gcoord.global.prod.js"></script>
 <script>
 let map = null;
 let tileLayer = null;
 
 function initBaiduMap() {
-    map = new BMapGL.Map('mapContainer');
-    map.centerAndZoom(new BMapGL.Point(116.404, 39.915), 12);
-    
-    tileLayer = new BMapGL.TileLayer({
-        transparentPng: true
-    });
-    
-    tileLayer.getTilesUrl = function (tileCoord, zoom) {
-        const x = tileCoord.x;
-        const y = tileCoord.y;
-        const z = zoom;
-        return `https://42.64.192.212:8089/igs/rest/services/wuhan/TileServer/tileImage/${z}/${x}/${y}/${z}?f=image`;
-    };
-    
-    map.addTileLayer(tileLayer);
+	map = new BMapGL.Map('mapContainer');
+	map.centerAndZoom(new BMapGL.Point(114.304569, 30.593354), 12);
+
+	tileLayer = new BMapGL.TileLayer({
+		transparentPng: true
+	});
+
+	tileLayer.getTilesUrl = function (tileCoord, zoom) {
+		const x = tileCoord.x;
+		const y = tileCoord.y;
+		const z = zoom;
+
+		// ① 百度 tile → 经纬度（BD09）
+		const lng = x * 360 / Math.pow(2, z) - 180;
+		const lat = Math.atan(Math.sinh(Math.PI * (1 - 2 * y / Math.pow(2, z)))) * 180 / Math.PI;
+
+		// ② 用 gcoord：BD09 → WGS84
+		const result = gcoord.transform(
+			[lng, lat],
+			gcoord.BD09,
+			gcoord.WGS84
+		);
+		const wgsLng = result[0];
+		const wgsLat = result[1];
+
+		// ③ 转 3857
+		const mercatorX = wgsLng * 20037508.34 / 180;
+		const mercatorY = Math.log(Math.tan((90 + wgsLat) * Math.PI / 360)) / (Math.PI / 180) * 20037508.34 / 180;
+
+		// ⚠️ 关键：层级偏移（需要调）
+		const level = z - 1;
+
+		const originShift = 20037508.3427892;
+		const resolution = (2 * originShift) / (256 * Math.pow(2, level));
+
+		const tileX = Math.floor((mercatorX + originShift) / (resolution * 256));
+		let tileY = Math.floor((originShift - mercatorY) / (resolution * 256));
+
+		// 👉 如果发现上下颠倒，打开这一行
+		// tileY = Math.pow(2, level) - tileY - 1;
+
+		return `https://42.64.192.212:8089/igs/rest/services/wuhan/TileServer/tile/${level}/${tileY}/${tileX}`;
+	};
+
+	map.addTileLayer(tileLayer);
 }
 
 </script>
