@@ -6,7 +6,16 @@ const routes = [
         name: 'blfxdx',
         component: () => import('@/views/sjjn/blfxdx.vue'),
         meta: {
-            title: '首页',
+            title: '病例分析',
+            keepAlive: true
+        }
+    },
+    {
+        path: '/sjjn/blfxdx/blfxdxlb',
+        name: 'blfxdxlb',
+        component: () => import('@/views/blfxdxlb/blfxdxlb.vue'),
+        meta: {
+            title: '病例分析列表',
             keepAlive: true
         }
     },
@@ -26,13 +35,8 @@ const router = createRouter({
 
 router.beforeEach((to:any, _from:any, next:any) => {
     document.title = to.meta.title as string || ''
-    if (to.meta.requiresAuth) {
-        const token = localStorage.getItem('token')
-        if (token) {
-            next()
-        } else {
-            next('/login')
-        }
+    if (to.path.slice(-1) !== '/') {
+        next({ path: to.path + '/', query: to.query })
     } else {
         next()
     }

@@ -1,13 +1,19 @@
 <template>
   <router-view v-slot="{ Component }">
-    <keep-alive>
-      <component :is="Component" v-if="$route.meta.keepAlive" />
+    <keep-alive :include="cachedComponents">
+      <component :is="Component" :key="$route.fullPath" />
     </keep-alive>
-    <component :is="Component" v-if="!$route.meta.keepAlive" />
   </router-view>
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+const cachedComponents = computed(() => {
+  return route.meta.keepAlive ? [route.name] : []
+})
 </script>
 
 <style>

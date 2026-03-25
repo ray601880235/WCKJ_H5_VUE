@@ -1,0 +1,116 @@
+{
+  "title": "首页",  //标题
+  "banner":[
+    {
+      "name": "banner1.png",//banner1图片名称
+      "src": "", //在线地图地址  优先src
+      "url": "https://www.baidu.com/" //banner1跳转链接
+    },
+    {
+      "name": "banner2.png", //banner2图片名称
+      "src": "",//在线地图地址  优先src
+      "url": "" //banner1跳转链接
+    }
+  ],
+  "data":[
+	{
+		"text":"内科疾病",
+		"count":66,
+		"children":[
+			{
+				"text":"1.慢性阻塞性肺疾病(COPD)1.慢性阻塞性肺疾病(COPD)",
+				"codestr":"1",
+			},
+			{
+				"text":"2.慢性肺源性心脏病",
+				"codestr":"2",
+			},
+			{
+				"text":"1.慢性阻塞性肺疾病(COPD)",
+				"url":"https://m.yixueks.com/sjjn/blfxdx/?codestr=001&type=home",
+			},
+			{
+				"text":"2.慢性肺源性心脏病",
+				"url":"https://m.yixueks.com/sjjn/blfxdx/?codestr=002&type=home",
+			},
+			{
+				"text":"1.慢性阻塞性肺疾病(COPD)",
+				"url":"https://m.yixueks.com/sjjn/blfxdx/?codestr=001&type=home",
+			},
+			{
+				"text":"2.慢性肺源性心脏病",
+				"url":"https://m.yixueks.com/sjjn/blfxdx/?codestr=002&type=home",
+			},
+			{
+				"text":"1.慢性阻塞性肺疾病(COPD)",
+				"url":"https://m.yixueks.com/sjjn/blfxdx/?codestr=001&type=home",
+			},
+			{
+				"text":"2.慢性肺源性心脏病",
+				"url":"https://m.yixueks.com/sjjn/blfxdx/?codestr=002&type=home",
+			},
+			{
+				"text":"1.慢性阻塞性肺疾病(COPD)",
+				"url":"https://m.yixueks.com/sjjn/blfxdx/?codestr=001&type=home",
+			},
+			{
+				"text":"2.慢性肺源性心脏病慢性肺源性心脏病",
+				"url":"https://m.yixueks.com/sjjn/blfxdx/?codestr=002&type=home",
+			},
+			{
+				"text":"1.慢性阻塞性肺疾病(COPD)",
+				"url":"https://m.yixueks.com/sjjn/blfxdx/?codestr=001&type=home",
+			},
+			{
+				"text":"2.慢性肺源性心脏病",
+				"url":"https://m.yixueks.com/sjjn/blfxdx/?codestr=002&type=home",
+			},
+			{
+				"text":"1.慢性阻塞性肺疾病(COPD)",
+				"url":"https://m.yixueks.com/sjjn/blfxdx/?codestr=001&type=home",
+			},
+			{
+				"text":"2.慢性肺源性心脏病",
+				"url":"https://m.yixueks.com/sjjn/blfxdx/?codestr=002&type=home",
+			},
+			{
+				"text":"1.慢性阻塞性肺疾病(COPD)",
+				"url":"https://m.yixueks.com/sjjn/blfxdx/?codestr=001&type=home",
+			},
+			{
+				"text":"2.慢性肺源性心脏病",
+				"url":"https://m.yixueks.com/sjjn/blfxdx/?codestr=002&type=home",
+			},
+			{
+				"text":"1.慢性阻塞性肺疾病(COPD)",
+				"url":"https://m.yixueks.com/sjjn/blfxdx/?codestr=001&type=home",
+			},
+			{
+				"text":"2.慢性肺源性心脏病",
+				"url":"https://m.yixueks.com/sjjn/blfxdx/?codestr=002&type=home",
+			}
+		]
+	},
+	{
+		"text":"外科疾病",
+		"count":58,
+		"children":[
+			
+		]
+	},
+	{
+		"text":"妇产科疾病",
+		"count":13,
+		"children":[
+			
+		]
+	},
+	{
+		"text":"儿科疾病",
+		"count":12,
+		"children":[
+			
+		]
+	},
+  ]
+}

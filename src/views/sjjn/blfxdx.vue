@@ -2,7 +2,9 @@
   <div class="case-analysis">
     <banner/>
 
-    <div class="label-count">病例分析 <span>{{ dataJson.pageNo }}</span>/{{ dataJson.pageSize }}</div>
+    <div class="label-count">病例分析 <span>{{ dataJson.pageNo }}</span>/{{ dataJson.pageSize }}
+      <van-icon name="wap-home" v-if="routerQuery.type === 'home'" @click="toHome"/>
+    </div>
 
     <div class="body">
 
@@ -24,7 +26,7 @@
 <script setup lang="ts">
 import {ref, provide, watch} from 'vue'
 import JSON5 from 'json5'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { getPublicPath } from '@/utils/pathHelper.ts'
 import banner from './components/banner.vue'
 import diagnosticFormula from './components/diagnosticFormula.vue'
@@ -34,7 +36,9 @@ import answerQuestions from './components/answerQuestions.vue'
 import videoView from './components/videoView.vue'
 import customerService from './components/customerService.vue'
 const route:any = useRoute()
-const codestr:string = route.query.codestr
+const router = useRouter()
+const routerQuery:any = route.query
+const codestr:string = routerQuery.codestr
 const qNumber = ref<number>(1)
 const dataJson = ref<any>({})
 
@@ -77,6 +81,10 @@ watch(() => codestr,(val: string)=>{
   immediate: true
 })
 
+const toHome = () => {
+  router.back()
+}
+
 provide('dataJson',dataJson)
 provide('qNumber',qNumber)
 
@@ -90,9 +98,16 @@ provide('qNumber',qNumber)
   .label-count{
     font-size: 16px;
     padding: 10px;
+    position: relative;
     >span{
       color: #24B49B;
       margin-left: 15px;
+    }
+    .van-icon-wap-home{
+      font-size: 26px;
+      position: absolute;
+      right: 10px;
+      top: 5px;
     }
   }
   .body{
