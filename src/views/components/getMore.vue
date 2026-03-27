@@ -1,6 +1,6 @@
 <template>
   <div class="get-more" @click="showQRCode">
-    <van-image :src="qrCodeUrl"/>
+<!--    <van-image :src="qrCodeUrl"/>-->
     <p>获取更多</p>
   </div>
   
@@ -39,23 +39,25 @@ onMounted(() => {
 
 <style scoped>
 .get-more{
+  width: 50%;
   position: fixed;
-  right: 10px;
-  bottom: 25px;
-  padding: 5px;
-  border: 1px solid #133FF0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  bottom: 20px;
+  padding: 10px 5px;
   text-align: center;
-  border-radius: 6px;
+  border-radius: 24px;
   box-sizing: border-box;
-  background-color: #fff;
+  background-color: #1DBE8A;
   z-index: 88;
   touch-action: none;
   display: flex;
   flex-direction: column;
   align-items: center;
   > p{
-    font-size: 10px;
-    color: #133FF0;
+    font-size: 16px;
+    color: #fff;
     margin: 0;
     font-weight: bold;
   }
