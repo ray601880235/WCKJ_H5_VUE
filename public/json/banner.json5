@@ -1,0 +1,14 @@
+{
+  "banner":[
+    {
+      "name": "banner1.png",//banner1图片名称
+      "src": "https://picsum.photos/id/237/800/450", //在线地图地址  优先src
+      "url": "https://www.baidu.com/" //banner1跳转链接
+    },
+    {
+      "name": "banner2.png", //banner2图片名称
+      "src": "https://picsum.photos/id/237/800/450",//在线地图地址  优先src
+      "url": "" //banner1跳转链接
+    }
+  ]
+}

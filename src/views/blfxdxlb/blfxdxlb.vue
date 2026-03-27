@@ -25,11 +25,13 @@
       </div>
     </div>
   </div>
+  <get-more/>
 </template>
 
 <script lang="ts" setup>
 import {ref} from 'vue'
 import { useRouter } from 'vue-router'
+import getMore from '@/views/components/getMore.vue'
 import JSON5 from 'json5'
 import topBg from '@/assets/top-bg.png'
 import {getPublicPath} from "@/utils/pathHelper";

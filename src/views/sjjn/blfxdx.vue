@@ -17,10 +17,13 @@
       <diagnostic-formula/>
 
       <video-view/>
+
     </div>
   </div>
 
   <customer-service/>
+
+  <get-more/>
 </template>
 
 <script setup lang="ts">
@@ -35,6 +38,7 @@ import caseSummary from './components/caseSummary.vue'
 import answerQuestions from './components/answerQuestions.vue'
 import videoView from './components/videoView.vue'
 import customerService from './components/customerService.vue'
+import getMore from '@/views/components/getMore.vue'
 const route:any = useRoute()
 const router = useRouter()
 const routerQuery:any = route.query

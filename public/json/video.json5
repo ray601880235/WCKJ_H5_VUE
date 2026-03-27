@@ -1,0 +1,5 @@
+{
+  "isvideo": true, //是否有视频  true 有  false 无
+  "title": "病例分析课程精选", //视频标题
+  "videosrc": "https://videoaliyun.yixueks.com/0099c384eaa571f0846d6732b78e0102/20836f5f2f28459593b802564bef0233-94b7d656bd12cabfed6f94667967f343-od-S00000001-200000.mp4" //在线视频链接地址
+}
